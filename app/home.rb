@@ -7,6 +7,10 @@ class Home
     BulletHell,
   ]
 
+  def initialize
+    $gtk.stop_music
+  end
+
   def tick(args)
     args.state.ticks_since_last_input ||= 0
     args.state.current_game_index ||= 0
@@ -14,12 +18,7 @@ class Home
     args.outputs.labels  << [32, args.grid.h - 32, 'DragonOS', 5, 0, *BLACK]
     args.outputs.labels  << [32, 84, 'Select a game to play', 2, 0, *BLACK]
 
-    control_text = if args.inputs.controller_one
-      "Return home with SELECT at anytime"
-    else
-      "Return home with ESC at anytime"
-    end
-
+    control_text = "Return home with #{args.inputs.controller_one ? 'SELECT (or H)' : 'H' } at anytime"
     args.outputs.labels  << [args.grid.w - 80, 84, control_text, 0, 2, *BLACK]
     time = Time.now
     args.outputs.labels  << [args.grid.w - 64, args.grid.h - 32, "#{time.hour}:#{time.min}", 2, 1, *BLACK]
