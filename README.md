@@ -30,6 +30,6 @@ Are you a Dragon Rider who would like to contribute your open source game to Dra
     ```
 3. Put your game's assets in the `totris` directory, e.g. `app/totris/sprites`
 4. Add your game's entry class to the `GAMES` constant in `app/home.rb`
-5. Add a 64x64 icon to `app/sprites` that follows this name scheme: `icon-Totris.png`, use the class name
+5. Add a 128x128 icon to `app/sprites` that follows this name scheme: `icon-Totris.png`, use the class name
 
 It'll now show up in the OS!
