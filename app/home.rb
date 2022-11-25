@@ -12,22 +12,26 @@ class Home
   end
 
   def tick(args)
+    margin = 64
+
     args.state.ticks_since_last_input ||= 0
     args.state.current_game_index ||= 0
     args.outputs.solids << [0, 0, args.grid.w, args.grid.h, *WHITE]
-    args.outputs.labels  << [32, args.grid.h - 32, 'DragonOS', 5, 0, *BLACK]
-    args.outputs.labels  << [32, 84, 'Select a game to play', 2, 0, *BLACK]
+    args.outputs.labels  << [margin, args.grid.h - margin, 'DragonOS', 5, 0, *BLACK]
+    args.outputs.labels  << [margin, 84, 'Select a game to play', 2, 0, *BLACK]
 
     control_text = "Return home with #{args.inputs.controller_one ? 'SELECT (or H)' : 'H' } at anytime"
     args.outputs.labels  << [args.grid.w - 80, 84, control_text, 0, 2, *BLACK]
     time = Time.now
-    args.outputs.labels  << [args.grid.w - 64, args.grid.h - 32, "#{time.hour}:#{time.min.to_s.rjust(2, '0')}", 2, 1, *BLACK]
+    args.outputs.labels  << [args.grid.w - 64, args.grid.h - margin, "#{time.hour}:#{time.min.to_s.rjust(2, '0')}", 2, 1, *BLACK]
 
     confirm_keys = [:z, :enter, :space]
     if confirm_keys.any? { |k| args.inputs.keyboard.key_down.send(k) } || (args.inputs.controller_one&.key_down&.a)
       args.state.current_game = GAMES[args.state.current_game_index].new
       return
     end
+
+    args.outputs.lines << [ 120, 160, args.grid.w - 120, 160, *BLACK]
 
     ready_for_input = args.state.ticks_since_last_input > INPUT_TICK_DELAY
     if ready_for_input
@@ -52,7 +56,6 @@ class Home
       args.state.current_game_index = GAMES.length - 1
     end
 
-    margin = 64
     spacer = 200
     y = 360
     icon_size = 128
