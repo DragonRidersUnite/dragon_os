@@ -52,11 +52,16 @@ class Home
       args.state.current_game_index = GAMES.length - 1
     end
 
+    margin = 64
+    spacer = 200
+    y = 360
+    icon_size = 128
     GAMES.each_with_index do |game, i|
-      args.outputs.labels << [32 + (240 * i), 360, game::NAME, *BLACK]
+      args.outputs.labels << [margin + (spacer * i), y, game::NAME, *BLACK]
+      args.outputs.sprites << [margin + (spacer * i), y, icon_size, icon_size, "sprites/icon-#{game}.png"]
     end
 
-    args.outputs.primitives << [32 + (args.state.current_game_index * 240), 360, 128, 128, *BLACK].border
+    args.outputs.sprites << [margin + (args.state.current_game_index * spacer), y, icon_size, icon_size, "sprites/frame.png"]
   end
 end
 
