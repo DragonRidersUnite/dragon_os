@@ -1,6 +1,7 @@
-def tick args
-  args.outputs.labels  << [640, 500, 'Hello World!', 5, 1]
-  args.outputs.labels  << [640, 460, 'Go to docs/docs.html and read it!', 5, 1]
-  args.outputs.labels  << [640, 420, 'Join the Discord! https://discord.dragonruby.org', 5, 1]
-  args.outputs.sprites << [576, 280, 128, 101, 'dragonruby.png']
-end
+require "app/constants.rb"
+require "app/game.rb"
+require "app/flappy_dragon/flappy_dragon.rb"
+require "app/pong/pong.rb"
+require "app/bullet_hell/bullet_hell.rb"
+require "app/home.rb"
+require "app/tick.rb"
