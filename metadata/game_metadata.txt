@@ -1,9 +1,9 @@
 # Remove the pound sign and leading space for the properties below before publishing your game.
-devid=dragonriders
+devid=dragonridersunited
 devtitle=Dragon Riders
-gameid=dragon_os
+gameid=dragon-os
 gametitle=DragonOS
-version=0.1
+version=0.1.0
 icon=metadata/icon.png
 
 # === Flags available at all licensing tiers ===
