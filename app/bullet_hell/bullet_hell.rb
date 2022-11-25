@@ -88,7 +88,7 @@ class BulletHell < Game
     args.state.enemy_bullets  = args.state.enemy_bullets.reject { |bullet| bullet[:despawn] }
 
     args.state.player[:cooldown] -= 1
-    if args.inputs.keyboard.key_held.space && args.state.player[:cooldown] <= 0 && args.state.player[:alive]
+    if (args.inputs.keyboard.key_held.space || args.inputs.controller_one&.key_down&.a) && args.state.player[:cooldown] <= 0 && args.state.player[:alive]
       args.state.player_bullets << {x: args.state.player[:x] + 12, y: args.state.player[:y] + 28, w: 16, h: 16, path: 'app/bullet_hell/sprites/star.png', dx: 0, dy: 8}.sprite
       args.state.fired_shots       += 1
       args.state.player[:cooldown] = 10 + 20 / args.state.wave
