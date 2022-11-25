@@ -1,4 +1,5 @@
 # DragonOS
+![Iconographic red dragon with the word 'DragonOS' beneath](https://user-images.githubusercontent.com/928367/204061027-b46c0172-b6a0-4fc7-94ab-137bbdd67649.png)
 
 ![Screenshot of home screen showing Flappy Dragon, Pong, and Bullet Hell as the selectable games](https://user-images.githubusercontent.com/928367/204060969-e2cdd572-9694-43a2-8a60-8d1c46f10acd.png)
 
