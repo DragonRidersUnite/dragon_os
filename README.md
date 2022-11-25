@@ -1,5 +1,7 @@
 # DragonOS
 
+![Screenshot of home screen showing Flappy Dragon, Pong, and Bullet Hell as the selectable games](https://user-images.githubusercontent.com/928367/204060969-e2cdd572-9694-43a2-8a60-8d1c46f10acd.png)
+
 A showcase of open source games built with [DragonRuby Game Toolkit](https://dragonruby.org/toolkit/game) compiled by the Dragon Rider community.
 
 The aim of this project is to make it easy for someone interested in the engine to boot up all of the game samples and open source games made by the community and play through them.
