@@ -4,7 +4,7 @@ A showcase of open source games built with [DragonRuby Game Toolkit](https://dra
 
 The aim of this project is to make it easy for someone interested in the engine to boot up all of the game samples and open source games made by the community and play through them.
 
-This project wouldn't be possible without [the DRGTK open source samples](https://github.com/DragonRuby/dragonruby-game-toolkit-contrib/tree/master/samples) and contributions to the community.
+This project wouldn't be possible without [the DRGTK open source samples](https://github.com/DragonRuby/dragonruby-game-toolkit-contrib/tree/master/samples) and contributions from the community.
 
 ## Developing
 
