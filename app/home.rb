@@ -20,7 +20,7 @@ class Home
     args.outputs.labels  << [margin, args.grid.h - margin, 'DragonOS', 5, 0, *BLACK]
     args.outputs.labels  << [margin, 84, 'Select a game to play', 2, 0, *BLACK]
 
-    control_text = "Return home with #{args.inputs.controller_one ? 'SELECT (or H)' : 'H' } at anytime"
+    control_text = "Return home with #{args.inputs.controller_one.connected ? 'SELECT (or H)' : 'H' } at anytime"
     args.outputs.labels  << [args.grid.w - 80, 84, control_text, 0, 2, *BLACK]
     time = Time.now
     args.outputs.labels  << [args.grid.w - 64, args.grid.h - margin, "#{time.hour}:#{time.min.to_s.rjust(2, '0')}", 2, 1, *BLACK]
