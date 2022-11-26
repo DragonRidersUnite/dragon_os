@@ -1,5 +1,5 @@
 # Remove the pound sign and leading space for the properties below before publishing your game.
-devid=dragonridersunited
+devid=dragonridersunite
 devtitle=Dragon Riders
 gameid=dragon-os
 gametitle=DragonOS
