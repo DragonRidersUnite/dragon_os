@@ -1,5 +1,7 @@
 class Home
   INPUT_TICK_DELAY = 8
+  MARGIN = 64
+
 
   GAMES = [
     FlappyDragon,
@@ -12,18 +14,16 @@ class Home
   end
 
   def tick(args)
-    margin = 64
-
     args.state.ticks_since_last_input ||= 0
     args.state.current_game_index ||= 0
     args.outputs.solids << [0, 0, args.grid.w, args.grid.h, *WHITE]
-    args.outputs.labels  << [margin, args.grid.h - margin, 'DragonOS', 5, 0, *BLACK]
-    args.outputs.labels  << [margin, 84, 'Select a game to play', 2, 0, *BLACK]
+    args.outputs.labels  << [MARGIN, args.grid.h - MARGIN, 'DragonOS', 5, 0, *BLACK]
+    args.outputs.labels  << [MARGIN, 84, 'Select a game to play', 2, 0, *BLACK]
 
     control_text = "Return home with #{args.inputs.controller_one.connected ? 'SELECT (or H)' : 'H' } at anytime"
     args.outputs.labels  << [args.grid.w - 80, 84, control_text, 0, 2, *BLACK]
     time = Time.now
-    args.outputs.labels  << [args.grid.w - margin, args.grid.h - margin, "#{time.hour}:#{time.min.to_s.rjust(2, '0')}", 2, 1, *BLACK]
+    args.outputs.labels  << [args.grid.w - MARGIN, args.grid.h - MARGIN, "#{time.hour}:#{time.min.to_s.rjust(2, '0')}", 2, 1, *BLACK]
 
     confirm_keys = [:z, :enter, :space]
     if confirm_keys.any? { |k| args.inputs.keyboard.key_down.send(k) } || (args.inputs.controller_one&.key_down&.a)
@@ -60,11 +60,11 @@ class Home
     y = 360
     icon_size = 128
     GAMES.each_with_index do |game, i|
-      args.outputs.labels << [margin + (spacer * i), y, game::NAME, *BLACK]
-      args.outputs.sprites << [margin + (spacer * i), y, icon_size, icon_size, "sprites/icon-#{game}.png"]
+      args.outputs.labels << [MARGIN + (spacer * i), y, game::NAME, *BLACK]
+      args.outputs.sprites << [MARGIN + (spacer * i), y, icon_size, icon_size, "sprites/icon-#{game}.png"]
     end
 
-    args.outputs.sprites << [margin + (args.state.current_game_index * spacer), y, icon_size, icon_size, "sprites/frame.png"]
+    args.outputs.sprites << [MARGIN + (args.state.current_game_index * spacer), y, icon_size, icon_size, "sprites/frame.png"]
   end
 end
 
