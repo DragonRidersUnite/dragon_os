@@ -6,10 +6,12 @@ class Home
     FlappyDragon,
     Pong,
     BulletHell,
+    Xenotest,
     TheLittleProbe,
   ]
 
   def initialize
+    $gtk.args.audio.each { |k, v| $gtk.args.audio[k] = nil }
     $gtk.stop_music
   end
 
@@ -67,4 +69,3 @@ class Home
     args.outputs.sprites << [MARGIN + (args.state.current_game_index * spacer), y, icon_size, icon_size, "sprites/frame.png"]
   end
 end
-
