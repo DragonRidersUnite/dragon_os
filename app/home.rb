@@ -2,11 +2,11 @@ class Home
   INPUT_TICK_DELAY = 8
   MARGIN = 64
 
-
   GAMES = [
     FlappyDragon,
     Pong,
     BulletHell,
+    TheLittleProbe,
   ]
 
   def initialize
