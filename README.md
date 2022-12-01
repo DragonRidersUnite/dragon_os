@@ -16,7 +16,7 @@ This project wouldn't be possible without [the DRGTK open source samples](https:
 
 This repository does not include the engine binary to run it, so you must have a copy of DragonRuby GTK.
 
-1. Download and unzip DragonRuby GTK; known working ver: Nov 12, 2022 - 70cd0b7d234544363972651eca364581f9fe0eb1
+1. Download and unzip DragonRuby GTK; known working ver: v3.24
 2. Move into engine dir and clear out mygame: `rm -rf mygame`
 3. Clone the repository into mygame: `git clone git@github.com:DragonRidersUnite/dragon_os.git mygame`
 4. Run the `dragonruby` program
