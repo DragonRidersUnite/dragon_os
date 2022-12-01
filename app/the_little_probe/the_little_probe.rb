@@ -750,10 +750,10 @@ class FallingCircle
   end
 
   def input_game
-    if inputs.keyboard.down || inputs.keyboard.space
+    if inputs.keyboard.space || inputs.keyboard.z || inputs.controller_one&.a
       circle.potential_lift += 0.03
       circle.potential_lift = circle.potential_lift.lesser(10)
-    elsif inputs.keyboard.key_up.down || inputs.keyboard.key_up.space
+    elsif inputs.keyboard.key_up.space || inputs.keyboard.key_up.z || inputs.controller_one&.key_up&.a
       play_sound
       circle.dy += circle.angle.vector_y circle.potential_lift
       circle.dx += circle.angle.vector_x circle.potential_lift
@@ -775,9 +775,9 @@ class FallingCircle
     end
 
     # aim probe
-    if inputs.keyboard.right || inputs.keyboard.a
+    if inputs.right
       circle.angle -= 2
-    elsif inputs.keyboard.left || inputs.keyboard.d
+    elsif inputs.left
       circle.angle += 2
     end
   end
