@@ -16,7 +16,7 @@ class Xenotest < Game
 
   def label(attrs)
     {
-      font: "fonts/Atkinson-Regular.ttf",
+      font: "app/xeno.test/fonts/Atkinson-Regular.ttf",
     }.merge(WHITE).merge(attrs)
   end
 
@@ -184,9 +184,9 @@ class Xenotest < Game
       play_sound(args.outputs, :confirm)
       current_index = args.state.current_game_index
       $gtk.reset
-      args.state.current_game_index = current_index
-      args.state.current_game = self.class.new
       args.state.intro.index = INTRO_TEXT.length - 1
+      args.state.current_game_index = current_index
+      args.state.current_game = Xenotest.new
     end
   end
 
@@ -314,10 +314,10 @@ class Xenotest < Game
 
     send("tick_#{args.state.scene}", args)
 
-    if args.inputs.mouse.has_focus && args.audio[:bg].paused
-      args.audio[:bg].paused = false
-    elsif !args.inputs.mouse.has_focus && !args.audio[:bg].paused
-      args.audio[:bg].paused = true
+    if args.inputs.mouse.has_focus && args.audio[:bg]&.paused
+      args.audio[:bg]&.paused = false
+    elsif !args.inputs.mouse.has_focus && !args.audio[:bg]&.paused
+      args.audio[:bg]&.paused = true
     end
 
     if args.inputs.keyboard.key_down.m
