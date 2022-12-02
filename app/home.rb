@@ -8,6 +8,7 @@ class Home
     BulletHell,
     Xenotest,
     TheLittleProbe,
+    Shadows
   ]
 
   def initialize
