@@ -3,7 +3,7 @@ devid=dragonridersunite
 devtitle=Dragon Riders Community
 gameid=dragon-os
 gametitle=DragonOS
-version=0.1.0
+version=0.2.0
 icon=metadata/icon.png
 
 # === Flags available at all licensing tiers ===

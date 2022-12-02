@@ -25,7 +25,7 @@ This repository does not include the engine binary to run it, so you must have a
 
 1. update changelog
 2. bump ver in metadata/game_metadata.txt & commit
-3. tag with git, e.g. `git tag -a v0.3`
+3. tag with git, e.g. `git tag -a v0.3.0`
 4. push tag to GitHub with `git push origin --tags`
 5. build the game with `dragonruby-publish --only-package mygame`
 6. upload the builds to itch
