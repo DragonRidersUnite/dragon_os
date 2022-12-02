@@ -21,6 +21,16 @@ This repository does not include the engine binary to run it, so you must have a
 3. Clone the repository into mygame: `git clone git@github.com:DragonRidersUnite/dragon_os.git mygame`
 4. Run the `dragonruby` program
 
+## Release Steps
+
+1. update changelog
+2. bump ver in metadata/game_metadata.txt & commit
+3. tag with git, e.g. `git tag -a v0.3`
+4. push tag to GitHub with `git push origin --tags`
+5. build the game with `dragonruby-publish --only-package mygame`
+6. upload the builds to itch
+7. publish itch update
+
 ## Add Your Game
 
 Are you a Dragon Rider who would like to contribute your open source game to DragonOS? Awesome! Here's what you need to do:
