@@ -30,6 +30,7 @@ class Home
 
     confirm_keys = [:z, :enter, :space]
     if confirm_keys.any? { |k| args.inputs.keyboard.key_down.send(k) } || (args.inputs.controller_one&.key_down&.a)
+      play_sound(args.outputs, :confirm)
       args.state.current_game = GAMES[args.state.current_game_index].new
       return
     end
@@ -39,9 +40,11 @@ class Home
     ready_for_input = args.state.ticks_since_last_input > INPUT_TICK_DELAY
     if ready_for_input
       if args.inputs.left
+        play_sound(args.outputs, :dir)
         args.state.current_game_index -= 1
         args.state.ticks_since_last_input = 0
       elsif args.inputs.right
+        play_sound(args.outputs, :dir)
         args.state.current_game_index += 1
         args.state.ticks_since_last_input = 0
       else
@@ -53,6 +56,7 @@ class Home
 
     if args.gtk.platform?(:desktop)
       if args.inputs.keyboard.key_down.f || args.inputs.controller_one&.key_down&.y
+        play_sound(args.outputs, :confirm)
         args.state.fullscreen = !args.state.fullscreen
         args.gtk.set_window_fullscreen(args.state.fullscreen)
       end
@@ -78,5 +82,9 @@ class Home
     end
 
     args.outputs.sprites << [MARGIN + (args.state.current_game_index * spacer), y, icon_size, icon_size, "sprites/frame.png"]
+  end
+
+  def play_sound(outputs, key)
+    outputs.sounds << "sounds/#{key}.wav"
   end
 end

@@ -8,6 +8,7 @@ class Game
 
   def tick(args)
     if args.inputs.keyboard.key_down.h || args.inputs.controller_one&.key_down&.select
+      args.outputs.sounds << "sounds/confirm.wav"
       args.state.current_game = Home.new
     end
   end
