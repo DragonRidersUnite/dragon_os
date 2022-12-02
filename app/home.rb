@@ -18,12 +18,13 @@ class Home
   def tick(args)
     args.state.ticks_since_last_input ||= 0
     args.state.current_game_index ||= 0
+    args.state.fullscreen ||= false
     args.outputs.solids << [0, 0, args.grid.w, args.grid.h, *WHITE]
     args.outputs.labels  << [MARGIN, args.grid.h - MARGIN, 'DragonOS', 5, 0, *BLACK]
     args.outputs.labels  << [MARGIN, 84, 'Select a game to play', 2, 0, *BLACK]
 
-    control_text = "Return home with #{args.inputs.controller_one.connected ? 'SELECT (or H)' : 'H' } at anytime"
-    args.outputs.labels  << [args.grid.w - 80, 84, control_text, 0, 2, *BLACK]
+    control_text = "Return home: #{args.inputs.controller_one.connected ? 'SELECT' : 'H' }"
+    args.outputs.labels  << [args.grid.w - 80, 50, control_text, -2, 2, *BLACK]
     time = Time.now
     args.outputs.labels  << [args.grid.w - MARGIN, args.grid.h - MARGIN, "#{time.hour}:#{time.min.to_s.rjust(2, '0')}", 2, 1, *BLACK]
 
@@ -48,6 +49,16 @@ class Home
       end
     else
       args.state.ticks_since_last_input += 1
+    end
+
+    if args.gtk.platform?(:desktop)
+      if args.inputs.keyboard.key_down.f || args.inputs.controller_one&.key_down&.y
+        args.state.fullscreen = !args.state.fullscreen
+        args.gtk.set_window_fullscreen(args.state.fullscreen)
+      end
+
+      fullscreen_text = "Toggle fullscreen: #{args.inputs.controller_one.connected ? 'Y' : 'F' }"
+      args.outputs.labels  << [args.grid.w - 80, 84, fullscreen_text, -2, 2, *BLACK]
     end
 
     if args.state.current_game_index >= GAMES.length
