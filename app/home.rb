@@ -14,6 +14,10 @@ class Home
   def initialize
     $gtk.args.audio.each { |k, v| $gtk.args.audio[k] = nil }
     $gtk.stop_music
+
+    if $gtk.cursor_shown?
+      $gtk.hide_cursor
+    end
   end
 
   def tick(args)
